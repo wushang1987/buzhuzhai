@@ -9,36 +9,41 @@ import Content from "./dashboard/Content";
 import CardPage from "./cardPage/CardPage";
 import AppBarPage from "./components/appBar/AppBarPage";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Dashboard></Dashboard>,
-    errorElement: <ErrorPage></ErrorPage>,
-    children: [
-      {
-        path: "/",
-        element: <Content />,
-      },
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Dashboard></Dashboard>,
+      errorElement: <ErrorPage></ErrorPage>,
+      children: [
+        {
+          path: "/",
+          element: <Content />,
+        },
 
-      {
-        path: "signIn",
-        element: <SignIn />,
-      },
-      {
-        path: "signUp",
-        element: <SignUp />,
-      },
-      {
-        path: "cardPage",
-        element: <CardPage />,
-      },
-      {
-        path: "header",
-        element: <AppBarPage />,
-      },
-    ],
-  },
-]);
+        {
+          path: "signIn",
+          element: <SignIn />,
+        },
+        {
+          path: "signUp",
+          element: <SignUp />,
+        },
+        {
+          path: "cardPage",
+          element: <CardPage />,
+        },
+        {
+          path: "header",
+          element: <AppBarPage />,
+        },
+      ],
+    },
+  ],
+  {
+    basename: "/buzhuzhai/",
+  }
+);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
