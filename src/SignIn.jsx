@@ -1,4 +1,3 @@
-import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -12,6 +11,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -36,13 +37,27 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    axios
+      .post(
+        "https://ap-southeast-2.aws.services.cloud.mongodb.com/api/client/v2.0/app/data-tdeweva/auth/providers/local-userpass/login",
+        {
+          username: data.get("email"),
+          password: data.get("password"),
+        }
+      )
+      .then(function (response) {
+        if (response.status === 200) {
+          console.log(response.data.user_id);
+          navigate("/");
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
