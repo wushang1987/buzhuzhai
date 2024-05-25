@@ -11,25 +11,18 @@ import CardPage from "./cardPage/CardPage";
 import AppBarPage from "./components/appBar/AppBarPage";
 import { store } from "./store";
 
+import Home from "./Home";
+
 const router = createBrowserRouter(
   [
     {
       path: "/",
-      element: <Dashboard></Dashboard>,
+      element: <Home></Home>,
       errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
           path: "/",
           element: <Content />,
-        },
-
-        {
-          path: "signIn",
-          element: <SignIn />,
-        },
-        {
-          path: "signUp",
-          element: <SignUp />,
         },
         {
           path: "cardPage",
@@ -40,6 +33,14 @@ const router = createBrowserRouter(
           element: <AppBarPage />,
         },
       ],
+    },
+    {
+      path: "signIn",
+      element: <SignIn />,
+    },
+    {
+      path: "signUp",
+      element: <SignUp />,
     },
   ],
   {
