@@ -23,6 +23,7 @@ import Chart from "./Chart";
 import Deposits from "./Deposits";
 import Orders from "./Orders";
 import Content from "./Content";
+import TestPage from "../TestPage";
 
 function Copyright(props) {
   return (
@@ -171,6 +172,7 @@ export default function Dashboard() {
           <Container>
             <Paper>
               <Outlet></Outlet>
+              <TestPage></TestPage>
             </Paper>
           </Container>
         </Box>
