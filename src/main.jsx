@@ -3,6 +3,7 @@ import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import ErrorPage from "./error-page";
+
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import Dashboard from "./dashboard/Dashboard";
@@ -12,6 +13,7 @@ import AppBarPage from "./components/appBar/AppBarPage";
 import { store } from "./store";
 
 import Home from "./Home";
+import "./main.css";
 
 const router = createBrowserRouter(
   [
