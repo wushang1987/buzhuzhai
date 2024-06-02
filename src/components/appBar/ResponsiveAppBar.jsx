@@ -55,8 +55,9 @@ function ResponsiveAppBar() {
     navigate(nav);
   }, [option]);
 
-  const { data, error, isLoading } = useGetUserQuery("bulbasaur");
+  const { data: userData, error, isLoading } = useGetUserQuery("bulbasaur");
 
+  const username = userData?.data?.user.username;
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -150,12 +151,9 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  alt={data.data.user.username}
-                  src="/static/images/avatar/2.jpg"
-                />
+                <Avatar alt={username} src="/static/images/avatar/2.jpg" />
               </IconButton>
-              {data.data.user.username}
+              {username}
             </Tooltip>
             <Menu
               sx={{ mt: "45px" }}
