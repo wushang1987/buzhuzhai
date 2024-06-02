@@ -24,10 +24,21 @@ export const pokemonApi = createApi({
         body,
       }),
     }),
+    logout: builder.mutation({
+      query: (body) => ({
+        url: `/auth/logout`,
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetPokemonByNameQuery, useGetUserQuery, useLoginMutation } =
-  pokemonApi;
+export const {
+  useGetPokemonByNameQuery,
+  useGetUserQuery,
+  useLoginMutation,
+  useLogoutMutation,
+} = pokemonApi;

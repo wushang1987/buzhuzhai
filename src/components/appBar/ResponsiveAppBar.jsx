@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router-dom";
-import { useGetUserQuery } from "../../services/pokemon";
+import { useGetUserQuery, useLogoutMutation } from "../../services/pokemon";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Logout"];
@@ -46,18 +46,26 @@ function ResponsiveAppBar() {
   };
   const navigate = useNavigate();
 
+  const [logOut] = useLogoutMutation();
+
   React.useEffect(() => {
     if (!option) {
       return;
     }
     const nav = dc[option].nav;
     console.log(nav);
-    navigate(nav);
+    logOut().then((item) => {
+      navigate(nav);
+    });
   }, [option]);
 
   const { data: userData, error, isLoading } = useGetUserQuery("bulbasaur");
 
+  if (userData?.data.user === null) {
+    navigate("/signIn");
+  }
   const username = userData?.data?.user.username;
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
