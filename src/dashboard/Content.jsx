@@ -10,6 +10,7 @@ import Link from "@mui/material/Link";
 import Chart from "./Chart";
 import Deposits from "./Deposits";
 import Orders from "./Orders";
+import axios from "axios";
 
 function Copyright(props) {
   return (
@@ -39,6 +40,12 @@ export default function Content() {
   const toggleDrawer = () => {
     setOpen(!open);
   };
+
+  React.useEffect(() => {
+    axios.get("/auth/").then((result) => {
+      console.log(result);
+    });
+  }, []);
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>

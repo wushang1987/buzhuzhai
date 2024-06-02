@@ -41,17 +41,12 @@ export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+
     axios
-      .post(
-        "http://localhost:3000/auth/login",
-        {
-          username: data.get("username"),
-          password: data.get("password"),
-        },
-        {
-          credentials: "include",
-        }
-      )
+      .post("http://localhost:3000/auth/login", {
+        username: data.get("username"),
+        password: data.get("password"),
+      })
       .then(function (response) {
         if (response.status === 200) {
           console.log(response.data.user_id);
