@@ -43,10 +43,13 @@ export default function SignIn() {
     const data = new FormData(event.currentTarget);
     axios
       .post(
-        "https://ap-southeast-2.aws.services.cloud.mongodb.com/api/client/v2.0/app/data-tdeweva/auth/providers/local-userpass/login",
+        "http://localhost:3000/auth/login",
         {
-          username: data.get("email"),
+          username: data.get("username"),
           password: data.get("password"),
+        },
+        {
+          credentials: "include",
         }
       )
       .then(function (response) {
@@ -88,10 +91,10 @@ export default function SignIn() {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="username"
+              label="User Name"
+              name="username"
+              autoComplete="username"
               autoFocus
             />
             <TextField

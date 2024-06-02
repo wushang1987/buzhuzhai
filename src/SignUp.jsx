@@ -12,6 +12,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -36,13 +38,32 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    axios
+      .post(
+        "http://localhost:3000/auth/signUp",
+        {
+          username: data.get("username"),
+          password: data.get("password"),
+        },
+
+        {
+          credentials: "include",
+        }
+      )
+      .then(function (response) {
+        if (response.status === 200) {
+          console.log(response.data.user_id);
+          // navigate("/");
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
@@ -70,35 +91,14 @@ export default function SignUp() {
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
-              </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
+                  id="username"
+                  label="User Name"
+                  name="username"
+                  // autoComplete="username"
                 />
               </Grid>
               <Grid item xs={12}>
