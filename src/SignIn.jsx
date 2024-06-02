@@ -11,8 +11,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useLoginMutation } from "./services/pokemon";
 
 function Copyright(props) {
   return (
@@ -38,24 +38,19 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
   const navigate = useNavigate();
-  const handleSubmit = (event) => {
+
+  const [login] = useLoginMutation();
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-
-    axios
-      .post("http://localhost:3000/auth/login", {
-        username: data.get("username"),
-        password: data.get("password"),
-      })
-      .then(function (response) {
-        if (response.status === 200) {
-          console.log(response.data.user_id);
-          navigate("/");
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    const loginObj = {
+      username: data.get("username"),
+      password: data.get("password"),
+    };
+    const loginResult = await login(loginObj);
+    if (loginResult.data.stateCode == 200) {
+      navigate("/");
+    }
   };
 
   return (

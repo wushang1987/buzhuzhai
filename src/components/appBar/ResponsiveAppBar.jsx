@@ -13,6 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router-dom";
+import { useGetUserQuery } from "../../services/pokemon";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Logout"];
@@ -53,6 +54,9 @@ function ResponsiveAppBar() {
     console.log(nav);
     navigate(nav);
   }, [option]);
+
+  const { data, error, isLoading } = useGetUserQuery("bulbasaur");
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
