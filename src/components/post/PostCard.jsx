@@ -1,5 +1,5 @@
 import React from "react";
-import { useGetPostQuery } from "../services/pokemon";
+import { useGetPostQuery } from "../../services/pokemon";
 import { EditorState, convertToRaw } from "draft-js";
 
 import draftToHtml from "draftjs-to-html";
@@ -15,8 +15,10 @@ function PostCard() {
   return allPost.data.allPost.map((post) => {
     return (
       <>
-        <div key={post._id}>{post.title}</div>
+        <h3 key={post._id}>{post.title}</h3>
+        <div>{post.createTime}</div>
         <div dangerouslySetInnerHTML={{ __html: draftToHtml(post.content) }} />
+        <hr />
       </>
     );
   });

@@ -11,6 +11,8 @@ export default function BasicButtons({ contentState, postTitle }) {
     const result = addPost({
       title: postTitle,
       content: contentState,
+      createTime: new Date().toLocaleString(),
+      updateTime: new Date().toLocaleString(),
     });
 
     console.log(result);

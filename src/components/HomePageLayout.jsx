@@ -8,7 +8,7 @@ import BasicList from "./BasicList";
 
 import RichEditor from "./RichEditor/RichEditor";
 
-import PostCard from "./PostCard";
+import PostCard from "./post/PostCard";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
