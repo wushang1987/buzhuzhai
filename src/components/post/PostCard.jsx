@@ -1,6 +1,7 @@
 import React from "react";
 import { useGetPostQuery } from "../../services/pokemon";
 import { EditorState, convertToRaw } from "draft-js";
+import moment from "moment";
 
 import draftToHtml from "draftjs-to-html";
 
@@ -16,7 +17,7 @@ function PostCard() {
     return (
       <>
         <h3 key={post._id}>{post.title}</h3>
-        <div>{post.createTime}</div>
+        <div>{moment(post.createTime).format("lll")}</div>
         <div dangerouslySetInnerHTML={{ __html: draftToHtml(post.content) }} />
         <hr />
       </>
