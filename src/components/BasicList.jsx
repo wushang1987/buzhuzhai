@@ -8,6 +8,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
 import InboxIcon from "@mui/icons-material/Inbox";
 import DraftsIcon from "@mui/icons-material/Drafts";
+import { Link } from "@mui/material";
 
 export default function BasicList() {
   return (
@@ -15,7 +16,7 @@ export default function BasicList() {
       <nav aria-label="main mailbox folders">
         <List>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton component={Link} to="/buzhuzhai/">
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
@@ -23,7 +24,7 @@ export default function BasicList() {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton component={Link} to="/buzhuzhai/editor">
               <ListItemIcon>
                 <DraftsIcon />
               </ListItemIcon>
@@ -33,20 +34,6 @@ export default function BasicList() {
         </List>
       </nav>
       <Divider />
-      {/* <nav aria-label="secondary mailbox folders">
-        <List>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemText primary="Trash" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton component="a" href="#simple-list">
-              <ListItemText primary="Spam" />
-            </ListItemButton>
-          </ListItem>
-        </List>
-      </nav> */}
     </Box>
   );
 }

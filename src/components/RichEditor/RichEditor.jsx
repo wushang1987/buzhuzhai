@@ -21,7 +21,6 @@ function RichEditor() {
     <>
       <BasicTextFields setPostTitle={setPostTitle}></BasicTextFields>
       <Editor onContentStateChange={onContentStateChange} />
-      {/* <MyInput></MyInput> */}
       <ButtonGroup
         postTitle={postTitle}
         contentState={contentState}

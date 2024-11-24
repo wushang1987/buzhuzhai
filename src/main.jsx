@@ -12,6 +12,9 @@ import CardPage from "./cardPage/CardPage";
 import AppBarPage from "./components/appBar/AppBarPage";
 import { store } from "./store";
 
+import Editor from "./Page/Editor";
+import PostList from "./Page/PostList";
+
 import Home from "./Home";
 import "./main.css";
 
@@ -24,7 +27,7 @@ const router = createBrowserRouter(
       children: [
         {
           path: "/",
-          element: <Content />,
+          element: <PostList />,
         },
         {
           path: "cardPage",
@@ -34,12 +37,21 @@ const router = createBrowserRouter(
           path: "header",
           element: <AppBarPage />,
         },
+        {
+          path: "postList",
+          element: <PostList />,
+        },
+        {
+          path: "editor",
+          element: <Editor />,
+        },
       ],
     },
     {
       path: "signIn",
       element: <SignIn />,
     },
+
     {
       path: "signUp",
       element: <SignUp />,

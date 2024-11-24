@@ -3,7 +3,7 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-
+import { Outlet, Link } from "react-router-dom";
 import BasicList from "./BasicList";
 
 import RichEditor from "./RichEditor/RichEditor";
@@ -27,13 +27,9 @@ export default function HomePageLayout() {
           <BasicList></BasicList>
         </Grid>
         <Grid item xs={10} md={9}>
-          <PostCard></PostCard>
-          <RichEditor></RichEditor>
-          {/* <Item>xs=6 md=9</Item>
-          <Item>xs=6 md=9</Item>
-          <Item>xs=6 md=9</Item>
-          <Item>xs=6 md=9</Item>
-          <Item>xs=6 md=9</Item> */}
+          <Outlet />
+          {/* <PostCard></PostCard>
+           <RichEditor></RichEditor> */}
         </Grid>
       </Grid>
     </Box>

@@ -16,12 +16,10 @@ export default function BasicTextFields({ setPostTitle }) {
     >
       <TextField
         id="outlined-basic"
-        label="Outlined"
+        label="标题"
         variant="outlined"
         onChange={handleOnchange}
       />
-      {/* <TextField id="filled-basic" label="Filled" variant="filled" /> */}
-      {/* <TextField id="standard-basic" label="Standard" variant="standard" /> */}
     </Box>
   );
 }

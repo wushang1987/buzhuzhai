@@ -1,3 +1,5 @@
+This is a simple blog system UI.
+
 Start Project:
 
 ```shell
