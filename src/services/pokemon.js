@@ -38,6 +38,12 @@ export const pokemonApi = createApi({
         body,
       }),
     }),
+
+    getPost: builder.query({
+      query: () => ({
+        url: `post/allPost`,
+      }),
+    }),
   }),
 });
 
@@ -49,4 +55,5 @@ export const {
   useLoginMutation,
   useLogoutMutation,
   useAddPostMutation,
+  useGetPostQuery,
 } = pokemonApi;

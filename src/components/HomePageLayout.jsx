@@ -8,6 +8,8 @@ import BasicList from "./BasicList";
 
 import RichEditor from "./RichEditor/RichEditor";
 
+import PostCard from "./PostCard";
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -25,6 +27,7 @@ export default function HomePageLayout() {
           <BasicList></BasicList>
         </Grid>
         <Grid item xs={10} md={9}>
+          <PostCard></PostCard>
           <RichEditor></RichEditor>
           {/* <Item>xs=6 md=9</Item>
           <Item>xs=6 md=9</Item>

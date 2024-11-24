@@ -1,3 +1,9 @@
+Start Project:
+
+```shell
+npm run dev
+```
+
 # React + Vite
 
 React Vite
