@@ -6,22 +6,25 @@ import React from "react";
 import BasicTextFields from "./BasicTextFields";
 import ButtonGroup from "./ButtonGroup";
 
+import MyInput from "./DraftRichEditor";
+
 function RichEditor() {
-  const [editorState, setEditorState] = React.useState(null);
+  const [contentState, setContentState] = React.useState(null);
 
   const [postTitle, setPostTitle] = React.useState(null);
 
-  const onEditorStateChange = (editorState) => {
-    console.log(editorState);
-    setEditorState(editorState);
+  const onContentStateChange = (contentState) => {
+    console.log(contentState);
+    setContentState(contentState);
   };
   return (
     <>
       <BasicTextFields setPostTitle={setPostTitle}></BasicTextFields>
-      <Editor onEditorStateChange={onEditorStateChange} />
+      <Editor onContentStateChange={onContentStateChange} />
+      {/* <MyInput></MyInput> */}
       <ButtonGroup
         postTitle={postTitle}
-        editorState={editorState}
+        contentState={contentState}
       ></ButtonGroup>
     </>
   );

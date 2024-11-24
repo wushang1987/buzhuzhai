@@ -4,13 +4,13 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 
 import { useAddPostMutation } from "../../services/pokemon";
-export default function BasicButtons({ editorState, postTitle }) {
+export default function BasicButtons({ contentState, postTitle }) {
   const [addPost] = useAddPostMutation();
   const handClick = (e) => {
     console.log(postTitle);
     const result = addPost({
       title: postTitle,
-      content: editorState,
+      content: contentState,
     });
 
     console.log(result);
