@@ -31,6 +31,13 @@ export const pokemonApi = createApi({
         body,
       }),
     }),
+    addPost: builder.mutation({
+      query: (body) => ({
+        url: `post/add`,
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
@@ -41,4 +48,5 @@ export const {
   useGetUserQuery,
   useLoginMutation,
   useLogoutMutation,
+  useAddPostMutation,
 } = pokemonApi;

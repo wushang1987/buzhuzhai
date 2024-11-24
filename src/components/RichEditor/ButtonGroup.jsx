@@ -1,11 +1,26 @@
 import * as React from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+import axios from "axios";
 
-export default function BasicButtons() {
+import { useAddPostMutation } from "../../services/pokemon";
+export default function BasicButtons({ editorState, postTitle }) {
+  const [addPost] = useAddPostMutation();
+  const handClick = (e) => {
+    console.log(postTitle);
+    const result = addPost({
+      title: postTitle,
+      content: editorState,
+    });
+
+    console.log(result);
+  };
+
   return (
     <Stack spacing={2} direction="row">
-      <Button variant="contained">保存</Button>
+      <Button variant="contained" onClick={handClick}>
+        保存
+      </Button>
     </Stack>
   );
 }
